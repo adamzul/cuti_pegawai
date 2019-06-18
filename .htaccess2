@@ -1,0 +1,43 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+RewriteCond %{REQUEST_URI} !(\.css|\.js|\.png|\.jpg|\.gif|robots\.txt)$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(css|js|images)/(.*)$ public/$1/$2 [L,NC]
+RewriteRule ^.env - [F,L,NC]
+RewriteRule ^app - [F,L,NC]
+RewriteRule ^bootstrap - [F,L,NC]
+RewriteRule ^config - [F,L,NC]
+RewriteRule ^database - [F,L,NC]
+RewriteRule ^resources - [F,L,NC]
+RewriteRule ^vendor - [F,L,NC]
+
+
+
+
+
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} !^/po/public
+RewriteRule ^(.*)$ /po/public/ [QSA,L,R=301]
+
+RewriteRule ^/(.*)/public/(.*) /$1 [QSA]
+
+RewriteRule ^.env - [F,L,NC]
+RewriteRule ^app - [F,L,NC]
+RewriteRule ^bootstrap - [F,L,NC]
+RewriteRule ^config - [F,L,NC]
+RewriteRule ^database - [F,L,NC]
+RewriteRule ^resources - [F,L,NC]
+RewriteRule ^vendor - [F,L,NC]
+
+
