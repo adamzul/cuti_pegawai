@@ -48,6 +48,15 @@ Route::group(['prefix' => 'jabatan'], function () {
 	Route::delete('/{id}','JabatanController@delete');
 });
 
+Route::group(['prefix' => 'tes'], function () {
+	Route::get('/', 'Template1Controller@index');
+	Route::post('/', 'Template1Controller@store');
+	Route::post('/get_data', 'Template1Controller@getData');
+	Route::get('/edit/{id}', 'Template1Controller@edit');
+	Route::put('/', 'Template1Controller@update');
+	Route::delete('/{id}','Template1Controller@delete');
+});
+
 Route::auth();
 
 

@@ -1,7 +1,17 @@
 @extends('layouts.app')
 @section('content')
 <!-- Content Header (Page header) -->
-
+<section class="content-header">
+  <h1>
+    Data Tables
+    <small>advanced tables</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">Tables</a></li>
+    <li class="active">Data tables</li>
+  </ol>
+</section>
 
 <!-- Main content -->
     <section class="content">
@@ -9,7 +19,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">{{$title}}</h3>
+              <h3 class="box-title">Hover Data Table</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -23,16 +33,6 @@
                 <tr>
                   <th>ID</th>
 					<th>nama</th>
-					<th>username</th>
-					<th>email</th>
-					<th>divisi</th>
-					<th>jabatan</th>
-					<th>telepon</th>
-					<th>alamat</th>
-					<th>atasan</th>
-					<th>tanggal lahir</th>
-					<th>tanggal masuk</th>
-					<th>tanggal keluar</th>
 					<th style="width:125px;">Action</th>
 
                 </tr>
@@ -72,73 +72,7 @@
 							<input type="text" class="form-control"   name="nama" placeholder="nama" >
 							<span class="help-block"></span>
 						</div>
-						<div class="form-group">
-							<label for="username">username</label>
-							<input type="text" class="form-control"   name="username" placeholder="username" >
-							<span class="help-block"></span>
-						</div>
-						<div class="form-group">
-							<label for="email">email</label>
-							<input type="email" class="form-control" name="email" placeholder="email" >
-							<span class="help-block"></span>
-						</div>
-						<div class="form-group">
-							<label for="password">password</label>
-							<input type="password" class="form-control" name="password" placeholder="password" >
-							<span class="help-block"></span>
-						</div>
-						<div class="form-group">
-							<label for="divisi">divisi</label>
-							<select class="form-control select2_single" name="divisi"  >
-								@foreach($divisiAll as $divisi)
-								<option value="{{ $divisi->id }}">{{$divisi->nama}}</option>
-								@endforeach
-							</select>
-							<span class="help-block"></span>
-						</div>
-						<div class="form-group">
-							<label for="jabatan">jabatan</label>
-							<select class="form-control select2_single" name="jabatan"  >
-								@foreach($jabatanAll as $jabatan)
-								<option value="{{ $jabatan->id }}">{{$jabatan->nama}}</option>
-								@endforeach
-							</select>
-							<span class="help-block"></span>
-						</div>
-						<div class="form-group">
-							<label for="telepon">telepon</label>
-							<input type="text" class="form-control"   name="telepon" placeholder="telepon" >
-							<span class="help-block"></span>
-						</div>
-						<div class="form-group">
-							<label for="alamat">alamat</label>
-							<textarea class="form-control"   name="alamat" placeholder="alamat" ></textarea>
-							<span class="help-block"></span>
-						</div>
-						<div class="form-group">
-							<label for="tanggal_masuk">tanggal lahir</label>
-							<input type="text" class="form-control datepicker"   name="tanggal_lahir" placeholder="tanggal lahir" >
-							<span class="help-block"></span>
-						</div>
-						<div class="form-group">
-							<label for="tanggal_masuk">tanggal masuk</label>
-							<input type="text" class="form-control datepicker"   name="tanggal_masuk" placeholder="tanggal masuk" >
-							<span class="help-block"></span>
-						</div>
-						<div class="form-group">
-							<label for="atasan">atasan</label>
-							<select class="form-control select2_single" name="atasan"  >
-								@foreach($pegawaiAll as $atasan)
-								<option value="{{ $atasan->id }}">{{$atasan->nama}}</option>
-								@endforeach
-							</select>
-							<span class="help-block"></span>
-						</div>
-						<div class="form-group">
-							<label for="tanggal_keluar">tanggal keluar</label>
-							<input type="text" class="form-control datepicker"   name="tanggal_keluar" placeholder="tanggal keluar" >
-							<span class="help-block"></span>
-						</div>
+						
 					</div>
 				</form>
 			</div>
@@ -162,7 +96,6 @@
 			"processing": true, //Feature control the processing indicator.
 			"serverSide": true, //Feature control DataTables' server-side processing mode.
 			"order": [], //Initial no order.
-            "scrollX": true,
 			// Load data for the table's content from an Ajax source
 			"ajax": {
 				"headers": {
@@ -268,10 +201,7 @@
 				{
 					console.log(data);
 					if(data.status == false) {
-						// for (var i = 0; i < data.inputerror.length; i++) {
-						// 	$('[name="' + data.inputerror[i] + '"]').parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
-						// 	$('[name="' + data.inputerror[i] + '"]').closest('div').find('.help-block').text(data.error_string[i]); //select span help-block class set text error string
-						// }
+						
 						console.log(data)
 						for(var key in data.inputerror){
 							$('[name="'+key+'"]').parent().addClass('has-error');
